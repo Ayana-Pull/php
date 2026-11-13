@@ -4,16 +4,18 @@ class Bruja extends Clase
 {
 
 
-    public function __construct($muerto, $nivel, $vida, $magical)
+    public function __construct($muerto, $magical)
     {
-        parent::__construct($muerto, $nivel, $vida, $magical);
+
 
         $magical = true;
         $muerto = $muerto;
-        $nivel = $nivel;
+        $nivel = 1;
+        $vida = 6;
         if ($nivel % 2 == 0) {
-            $vida = $vida + 2;
+            $vida += 2;
         }
-        $vida = $vida ?? 6;
+
+        parent::__construct($muerto, $nivel, $vida, $magical);
     }
 }

@@ -18,7 +18,7 @@ class Clase
         $this->atributos = new Atributos();
     }
 
-    public function getNivel(): int
+    public function getNivel()
     {
         return $this->nivel;
     }

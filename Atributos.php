@@ -8,14 +8,14 @@ class Atributos
     private int $sabiduria;
     private int $carisma;
 
-    public function _construct($fureza, $destreza, $constitucion, $inteligencia, $sabiduria, $carisma)
+    public function __construct()
     {
-        $this->fuerza = $fuerza ?? 10;
-        $this->destreza = $destreza ?? 10;
-        $this->constitucion = $constitucion ?? 10;
-        $this->inteligencia = $inteligencia ?? 10;
-        $this->sabiduria = $sabiduria ?? 10;
-        $this->carisma = $carisma ?? 10;
+        $this->fuerza = 10;
+        $this->destreza = 10;
+        $this->constitucion = 10;
+        $this->inteligencia = 10;
+        $this->sabiduria = 10;
+        $this->carisma = 10;
     }
 
     public function getFuerza()
@@ -71,34 +71,83 @@ class Atributos
     public function salvacion($atributo)
     {
         if ($atributo === 'Fuerza') {
-            $bonificador = $this->getFuerza();
+            $bonificador = ($this->getFuerza() - 10) / 2;
             $resultado = $bonificador + rand(1, 20);
             return $resultado;
         }
         if ($atributo === 'Destreza') {
-            $bonificador = $this->getDestreza();
+            $bonificador = ($this->getDestreza() - 10) / 2;
             $resultado = $bonificador + rand(1, 20);
             return $resultado;
         }
         if ($atributo === 'Sabiduria') {
-            $bonificador = $this->getSabiduria();
+            $bonificador = ($this->getSabiduria() - 10) / 2;
             $resultado = $bonificador + rand(1, 20);
             return $resultado;
         }
         if ($atributo === 'Carisma') {
-            $bonificador = $this->getCarisma();
+            $bonificador = ($this->getCarisma() - 10) / 2;
             $resultado = $bonificador + rand(1, 20);
             return $resultado;
         }
         if ($atributo === 'Constitucion') {
-            $bonificador = $this->getConstitucion();
+            $bonificador = ($this->getConstitucion() - 10) / 2;
             $resultado = $bonificador + rand(1, 20);
             return $resultado;
         }
         if ($atributo === 'Inteligencia') {
-            $bonificador = $this->getInteligencia();
+            $bonificador = ($this->getInteligencia() - 10 / 2);
             $resultado = $bonificador + rand(1, 20);
             return $resultado;
+        }
+    }
+
+    public function setupAtributes()
+    {
+        $tablas = [8 => 0, 9 => 1, 10 => 2, 11 => 3, 12 => 4, 13 => 5, 14 => 7, 15 => 9];
+        $contador = 0;
+        var_dump("Usa la siguiente tabla el numero y su puntaje equivalente, tiene que sumar a 27 puntos {$tablas}\n");
+        var_dump("Ingrese el numero o dejo vacio y se queda como 10\n");
+        $this->setFuerza(readline("Ingrese el numero de Fuerza: \n"));
+        $this->setDestreza(readline("Ingrese el numero de Destreza: \n"));
+        $this->setCarisma(readline("Ingrese el numero de Carisma: "));
+        $this->setConstitucion(readline("Ingrese el numero de Constitucion: \n"));
+        $this->setInteligencia(readline("Ingrese el numero de Inteligencia: \n"));
+        $this->setSabiduria(readline("Ingrese el numero de Sabiduria: \n"));
+
+
+        foreach ($tablas as $total => $puntos) {
+            if ($this->getFuerza() === $total) {
+                $contador += $puntos;
+            }
+            if ($this->getDestreza() === $total) {
+                $contador += $puntos;
+            }
+            if ($this->getCarisma() === $total) {
+                $contador += $puntos;
+            }
+            if ($this->getConstitucion() === $total) {
+                $contador += $puntos;
+            }
+            if ($this->getInteligencia() === $total) {
+                $contador += $puntos;
+            }
+            if ($this->getSabiduria() === $total) {
+                $contador += $puntos;
+            }
+        }
+        if ($contador === 27) {
+            return var_dump("Correcto");
+        }
+        if ($contador > 27) {
+            $exceso = $contador - 27;
+            var_dump("te pasaste {$exceso} puntos\n");
+            $this->setupAtributes();
+        }
+        if ($contador < 27) {
+            $sobra = 27 - $contador;
+            var_dump("te pasaste {$sobra} puntos\n");
+            $this->setupAtributes();
         }
     }
 }

@@ -2,18 +2,33 @@
 require_once __DIR__ . '/Clase.php';
 class Rogue extends Clase
 {
-
-
-    public function __construct($muerto, $nivel, $vida, $magical)
+    public Arma $arma;
+    public function __construct($arma, $muerto, $nivel, $vida, $magical)
     {
-        parent::__construct($muerto, $nivel, $vida, $magical);
 
         $magical = false;
+        $nivel = 1;
         $muerto = $muerto;
-        $nivel = $nivel;
+        $vida = 8;
         if ($nivel % 2 == 0) {
-            $vida = $vida - 2;
+            $vida += 2;
         }
-        $vida = $vida ?? 8;
+        parent::__construct($muerto, $nivel, $vida, $magical);
+        $this->arma = $arma;
+    }
+    public function getArma()
+    {
+        return $this->arma;
+    }
+    public function setArma($arma)
+    {
+        return $this->arma = $arma;
+    }
+
+    public function ataqueSorpresa($arma)
+    {
+        $total = $this->arma->dano();
+        $total = $total + rand(1, 6) + rand(1, 6);
+        return $total;
     }
 }
