@@ -52,6 +52,8 @@ class Arma
 
     public function dano()
     {
+        var_dump("bonificador");
+        var_dump($this->getBono());
         return $dano = $this->getBono() + rand(1, $this->getDado());
     }
 }
