@@ -1,4 +1,4 @@
-<?
+<?php
 class Atributos
 {
     private int $fuerza;
@@ -118,14 +118,15 @@ class Atributos
     {
         $tablas = [8 => 0, 9 => 1, 10 => 2, 11 => 3, 12 => 4, 13 => 5, 14 => 7, 15 => 9];
         $contador = 0;
-        var_dump("Usa la siguiente tabla el numero y su puntaje equivalente, tiene que sumar a 27 puntos {$tablas}\n");
+        var_dump("Usa la siguiente tabla el numero y su puntaje equivalente, tiene que sumar a 27 puntos");
+        var_dump($tablas);
         var_dump("Ingrese el numero o dejo vacio y se queda como 10\n");
-        $this->setFuerza(readline("Ingrese el numero de Fuerza: \n"));
-        $this->setDestreza(readline("Ingrese el numero de Destreza: \n"));
+        $this->setFuerza(readline("Ingrese el numero de Fuerza: "));
+        $this->setDestreza(readline("Ingrese el numero de Destreza: "));
         $this->setCarisma(readline("Ingrese el numero de Carisma: "));
-        $this->setConstitucion(readline("Ingrese el numero de Constitucion: \n"));
-        $this->setInteligencia(readline("Ingrese el numero de Inteligencia: \n"));
-        $this->setSabiduria(readline("Ingrese el numero de Sabiduria: \n"));
+        $this->setConstitucion(readline("Ingrese el numero de Constitucion: "));
+        $this->setInteligencia(readline("Ingrese el numero de Inteligencia: "));
+        $this->setSabiduria(readline("Ingrese el numero de Sabiduria: "));
 
 
         foreach ($tablas as $total => $puntos) {
