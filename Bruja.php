@@ -2,20 +2,33 @@
 require_once __DIR__ . '/Clase.php';
 class Bruja extends Clase
 {
-
-
-    public function __construct($muerto, $magical)
+    public Hechizo $hechizo;
+    public function __construct($hechizo)
     {
+        parent::__construct();
 
-
-        $magical = true;
-        $muerto = $muerto;
-        $nivel = 1;
-        $vida = 6;
-        if ($nivel % 2 == 0) {
-            $vida += 2;
+        $this->setMagical(false);
+        $this->setNivel(1);
+        $this->setVida(6);
+        if ($this->getNivel() % 2 == 0) {
+            $this->setVida($this->getNivel() + 2);
         }
+        $this->hechizo = $hechizo;
+    }
+    public function getHechizo()
+    {
+        return $this->hechizo;
+    }
+    public function setHechizo($hechizo)
+    {
+        return $this->hechizo = $hechizo;
+    }
 
-        parent::__construct($muerto, $nivel, $vida, $magical);
+    public function ataqueMagico($hechizo)
+    {
+        $total = $this->hechizo->dano();
+        $total = $total + rand(1, 6) + rand(1, 6);
+        var_dump("total de ataque magico {$total}");
+        return $total;
     }
 }

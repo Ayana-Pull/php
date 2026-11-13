@@ -3,17 +3,16 @@ require_once __DIR__ . '/Clase.php';
 class Rogue extends Clase
 {
     public Arma $arma;
-    public function __construct($arma, $muerto, $nivel, $vida, $magical)
+    public function __construct($arma)
     {
+        parent::__construct();
 
-        $magical = false;
-        $nivel = 1;
-        $muerto = $muerto;
-        $vida = 8;
-        if ($nivel % 2 == 0) {
-            $vida += 2;
+        $this->setMagical(false);
+        $this->setNivel(1);
+        $this->setVida(8);
+        if ($this->getNivel() % 2 == 0) {
+            $this->setVida($this->getNivel() + 2);
         }
-        parent::__construct($muerto, $nivel, $vida, $magical);
         $this->arma = $arma;
     }
     public function getArma()
@@ -29,6 +28,7 @@ class Rogue extends Clase
     {
         $total = $this->arma->dano();
         $total = $total + rand(1, 6) + rand(1, 6);
+        var_dump("total de ataque sorpresa {$total}");
         return $total;
     }
 }

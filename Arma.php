@@ -6,11 +6,11 @@ class Arma
     public string $atributo;
     public string $bono;
 
-    public function __construct($tipo, $dado, $bono, $atributo)
+    public function __construct($tipo, $dado, $atributo)
     {
         $this->tipo = $tipo;
         $this->dado = $dado;
-        $this->bono = $bono;
+        $this->bono = 0;
         $this->atributo = $atributo;
     }
 
@@ -30,14 +30,6 @@ class Arma
     {
         return $this->dado = $dado;
     }
-    public function getBono()
-    {
-        return $this->bono;
-    }
-    public function setBono($bono)
-    {
-        return $this->bono = $bono;
-    }
     public function getAtributo()
     {
         return $this->atributo;
@@ -46,13 +38,17 @@ class Arma
     {
         return $this->atributo = $atributo;
     }
-
-    //gota put this when creating the wepon aaaa
-    public function caluladobono($atributo)
+    public function getBono()
     {
-        $total = ($atributo - 10) / 2;
-        return $this->setBono($total);
+        return $this->bono;
     }
+    public function setBono($bono)
+    {
+        return $this->bono = $bono;
+    }
+
+    //gota put this when creating the wepon
+
 
     public function dano()
     {

@@ -67,39 +67,51 @@ class Atributos
         $this->carisma = $carisma;
     }
 
-
-    public function salvacion($atributo)
+    public function caluladobono(string $atributo)
     {
         if ($atributo === 'Fuerza') {
-            $bonificador = ($this->getFuerza() - 10) / 2;
-            $resultado = $bonificador + rand(1, 20);
-            return $resultado;
+            return (int) floor(($this->getFuerza() - 10) / 2);
         }
         if ($atributo === 'Destreza') {
-            $bonificador = ($this->getDestreza() - 10) / 2;
-            $resultado = $bonificador + rand(1, 20);
-            return $resultado;
+            return (int) floor(($this->getDestreza() - 10) / 2);
         }
         if ($atributo === 'Sabiduria') {
-            $bonificador = ($this->getSabiduria() - 10) / 2;
-            $resultado = $bonificador + rand(1, 20);
-            return $resultado;
+            return (int) floor(($this->getSabiduria() - 10) / 2);
         }
         if ($atributo === 'Carisma') {
-            $bonificador = ($this->getCarisma() - 10) / 2;
-            $resultado = $bonificador + rand(1, 20);
-            return $resultado;
+            return (int) floor(($this->getCarisma() - 10) / 2);
         }
         if ($atributo === 'Constitucion') {
-            $bonificador = ($this->getConstitucion() - 10) / 2;
-            $resultado = $bonificador + rand(1, 20);
-            return $resultado;
+            return (int) floor(($this->getConstitucion() - 10) / 2);
         }
         if ($atributo === 'Inteligencia') {
-            $bonificador = ($this->getInteligencia() - 10 / 2);
-            $resultado = $bonificador + rand(1, 20);
-            return $resultado;
+            return (int) floor(($this->getInteligencia() - 10) / 2);
         }
+    }
+    //need this for bono of arma and hechizos
+    public function salvacion($atributoasalvar)
+    {
+        $bonificador = 0;
+        if ($atributoasalvar === 'Fuerza') {
+            $bonificador = $this->caluladobono($this->getFuerza());
+        }
+        if ($atributoasalvar === 'Destreza') {
+            $bonificador = $this->caluladobono($this->getDestreza());
+        }
+        if ($atributoasalvar === 'Sabiduria') {
+            $bonificador = $this->caluladobono($this->getSabiduria());
+        }
+        if ($atributoasalvar === 'Carisma') {
+            $bonificador = $this->caluladobono($this->getCarisma());
+        }
+        if ($atributoasalvar === 'Constitucion') {
+            $bonificador = $this->caluladobono($this->getConstitucion());
+        }
+        if ($atributoasalvar === 'Inteligencia') {
+            $bonificador = $this->caluladobono($this->getInteligencia());
+        }
+        $resultado = $bonificador + rand(1, 20);
+        return $resultado;
     }
 
     public function setupAtributes()

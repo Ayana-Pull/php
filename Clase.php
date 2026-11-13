@@ -9,12 +9,12 @@ class Clase
     private Atributos $atributos;
     private bool $muerto;
 
-    public function __construct(bool $muerto, int $nivel, int $vida, bool $magical)
+    public function __construct()
     {
-        $this->nivel = $nivel;
-        $this->vida = $vida;
-        $this->magical = $magical;
-        $this->muerto = $muerto ?? true;
+        $this->nivel = 0;
+        $this->vida = 0;
+        $this->magical = false;
+        $this->muerto = true;
         $this->atributos = new Atributos();
     }
 
@@ -53,6 +53,14 @@ class Clase
     public function setMuerto($muerto)
     {
         $this->muerto = $muerto;
+    }
+    public function getAtributos()
+    {
+        return $this->atributos;
+    }
+    public function setAtributos($atributos)
+    {
+        $this->atributos = $atributos;
     }
 
 

@@ -6,12 +6,12 @@ class Personaje
     public int $experiencia;
     public Clase $clase;
 
-    public function __construct(string $nombre, string $raza, Clase $clase, int $experiencia)
+    public function __construct(string $nombre, string $raza, Clase $clase)
     {
         $this->nombre = $nombre;
         $this->raza = $raza;
         $this->clase = $clase;
-        $this->experiencia = $experiencia;
+        $this->experiencia = 0;
     }
     public function getNombre()
     {
